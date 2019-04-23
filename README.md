@@ -10,3 +10,8 @@ some of the methods I'm currently using. The strategy pattern allows me to easil
 want to use at runtime, and also reduces the need for multiple nested if/else statements which would be difficult to test.
 The strategy pattern also allows me to easily remove old or add new patterns with ease in future as it just requires 
 the creation of new classes containing the relevant payment algorithm.
+
+2) **Strategy Pattern for product sorting algorithms**
+
+I'm going to use the strategy pattern to allow runtime selection of which sorting algorithm the user would like to use 
+to sort products e.g. descending/ascending price.
