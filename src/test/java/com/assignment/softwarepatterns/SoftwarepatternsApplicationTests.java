@@ -21,15 +21,6 @@ public class SoftwarepatternsApplicationTests {
 
 	@Test
 	public void checkIfSortWorks() {
-		ArrayList<Product> products = new ArrayList<>();
-		products.add(new Product("Dyson", "Hoover", 13.24));
-		products.add(new Product("Dyson", "Hoover2", 15.23));
-		products.add(new Product("Dyson", "Hoover3", 20.23));
-		products.add(new Product("Dyson", "Hoover4", 1.45));
-
-		//AscendingPriceSort ascendingPriceSort = new AscendingPriceSort(products);
-
-		//ascendingPriceSort.implementSortingAlgorithm(products);
 
 	}
 }
