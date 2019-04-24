@@ -1,15 +1,11 @@
 package com.assignment.softwarepatterns.controllers;
 
 import com.assignment.softwarepatterns.models.Product;
-import com.assignment.softwarepatterns.sorting.AscendingPriceSort;
-import com.assignment.softwarepatterns.sorting.DescendingPriceSort;
+import com.assignment.softwarepatterns.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,33 +13,14 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ProductController {
 
+	@Autowired
+	ProductService productService;
 
-
-	@RequestMapping(value = "/getallproductsascendingprice",
+	@RequestMapping(value = "/getallproducts/{sortType}",
 					method = RequestMethod.GET,
 	        produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Product> getAllProducts() {
-		ArrayList<Product> products = new ArrayList<>();
-		products.add(new Product("Dyson", "Hoover", 13.24));
-		products.add(new Product("Dyson", "Hoover2", 15.23));
-		products.add(new Product("Dyson", "Hoover3", 20.23));
-		products.add(new Product("Dyson", "Hoover4", 1.45));
-
-		return new AscendingPriceSort().implementSortingAlgorithm(products);
-	}
-
-	@RequestMapping(value = "/getallproductsdescendingprice",
-					method = RequestMethod.GET,
-					produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<Product> getDescAllProducts() {
-		ArrayList<Product> products = new ArrayList<>();
-		products.add(new Product("Dyson", "Hoover", 13.24));
-		products.add(new Product("Dyson", "Hoover2", 15.23));
-		products.add(new Product("Dyson", "Hoover3", 20.23));
-		products.add(new Product("Dyson", "Hoover4", 1.45));
-
-		return new DescendingPriceSort(products).implementSortingAlgorithm(products);
+	public List<Product> getAllProducts(@PathVariable("sortType") String sortType) {
+		return productService.getAllProducts(sortType);
 	}
 }
