@@ -23,4 +23,12 @@ public class ProductController {
 	public List<Product> getAllProducts(@PathVariable("sortType") String sortType) {
 		return productService.getAllProducts(sortType);
 	}
+
+	@RequestMapping(value = "/updateproductstock",
+					method = RequestMethod.PUT,
+					produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Product> updateProducts(@RequestBody List<Product> products) {
+		return productService.updateAllProducts(products);
+	}
 }

@@ -10,4 +10,6 @@ public interface ProductRepository extends CrudRepository <Product, Long> {
 
 	@Query(value = "SELECT * FROM product", nativeQuery = true)
 	List<Product> getAllProducts();
+
+	Product findByManufacturerAndTitle(String manufacturer, String title);
 }

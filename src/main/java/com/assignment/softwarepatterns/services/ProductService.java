@@ -26,6 +26,15 @@ public class ProductService {
 		}
 	}
 
+	public List<Product> updateAllProducts(List<Product> products) {
+		for(Product p : products) {
+			Product productToUpdate = productRepository.findByManufacturerAndTitle(p.getManufacturer(), p.getTitle());
+			productToUpdate.setStock(p.getStock());
+			productRepository.save(productToUpdate);
+		}
+		return getProductsAscendingByPrice(productRepository.getAllProducts());
+	}
+
 	private List<Product> getProductsAscendingByPrice(List<Product> products) {
 		ProductSort sortedProducts = new AscendingPriceSort();
 		return sortedProducts.sortProductsList(products);
