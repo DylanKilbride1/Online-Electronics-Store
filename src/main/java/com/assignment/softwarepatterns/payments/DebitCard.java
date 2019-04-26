@@ -52,6 +52,7 @@ public class DebitCard implements PaymentStrategy{
 
 	@Override
 	public PaymentReceipt paymentOperation(double amount) {
-		return null;
+		//Contact Debit card payment provider in real world here...
+		return new PaymentReceipt("success");
 	}
 }

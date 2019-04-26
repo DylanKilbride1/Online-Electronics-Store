@@ -20,31 +20,31 @@ public class AuthService {
 	public AuthorisationResponse customerLogin(LoginDetails loginDetails) {
 		if(customerRepository.existsByEmailAndPassword(loginDetails.getEmail(),
 						loginDetails.getPassword())) {
-			return new AuthorisationResponse(customerRepository.findCustomerByEmail(loginDetails.getEmail()).getCustomerId(),
+			return new AuthorisationResponse(loginDetails.getEmail(),
 							true);
 		} else {
-			return new AuthorisationResponse(0L, false);
+			return new AuthorisationResponse("0", false);
 		}
 	}
 
 	public AuthorisationResponse administratorLogin(LoginDetails loginDetails) {
 		if(administratorRepository.existsByEmailAndPassword(loginDetails.getEmail(),
 						loginDetails.getPassword())) {
-			return new AuthorisationResponse(administratorRepository.findAdministratorByEmail(loginDetails.getEmail()).getAdminId(),
+			return new AuthorisationResponse(loginDetails.getEmail(),
 							true);
 		} else {
-			return new AuthorisationResponse(0L, false);
+			return new AuthorisationResponse("0", false);
 		}
 	}
 
 	public AuthorisationResponse customerRegistration(LoginDetails loginDetails) {
 		if(customerRepository.existsByEmail(loginDetails.getEmail())) {
-			return new AuthorisationResponse(0L, false);
+			return new AuthorisationResponse("0", false);
 		} else {
 			customerRepository.save(new Customer(loginDetails.getUsername(),
 							loginDetails.getEmail(),
 							loginDetails.getPassword()));
-			return new AuthorisationResponse(customerRepository.findCustomerByEmail(loginDetails.getEmail()).getCustomerId(),
+			return new AuthorisationResponse(loginDetails.getEmail(),
 							true);
 		}
 	}

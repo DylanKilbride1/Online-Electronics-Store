@@ -32,6 +32,7 @@ public class PayPal implements PaymentStrategy{
 
 	@Override
 	public PaymentReceipt paymentOperation(double amount) {
-		return null;
+		//Contact paypal api in real world here...
+		return new PaymentReceipt("success");
 	}
 }
