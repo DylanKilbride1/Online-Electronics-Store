@@ -13,6 +13,8 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
   private long customerId;
+	private long customerId1;
+	private long customerId2;
 	private String username;
 	private String email;
 	@JsonIgnore
