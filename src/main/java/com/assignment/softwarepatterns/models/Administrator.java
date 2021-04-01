@@ -13,6 +13,7 @@ public class Administrator {
 	private long adminId;
 	private String email;
 	private String password;
+	private String travelport;
 
 	public long getAdminId() {
 		return adminId;
